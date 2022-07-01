@@ -2,18 +2,26 @@ import React, {useState,useEffect} from 'react'
 import {SafeAreaView,Text,View,ScrollView,TouchableOpacity } from 'react-native';
 import ListOfCards from '../../components/ListOfCards';
 import {Camera} from 'react-native-vision-camera';
+import {useNavigation} from '@react-navigation/native';
 
 
 
 const Index = () => {
+
+const navigation: any = useNavigation();
 
 return (
     <SafeAreaView>
     <ScrollView>
     <TouchableOpacity
           onPress={async () => {
-            const newCameraPermission = await Camera.requestCameraPermission()
-            const newMicrophonePermission = await Camera.requestMicrophonePermission()
+            const newCameraPermission = await Camera.requestCameraPermission();
+            const newMicrophonePermission =
+              await Camera.requestMicrophonePermission();
+            const cameraPermission = await Camera.getCameraPermissionStatus();
+            const microphonePermission =
+              await Camera.getMicrophonePermissionStatus();
+
 
             navigation.navigate('Camera');
           }}

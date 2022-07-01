@@ -6,9 +6,6 @@ const Index = () => {
   const camera: any = useRef();
 
   const devices = useCameraDevices();
-  console.log('====================================');
-  console.log();
-  console.log('====================================');
   const device = devices.front;
 
   if (device == null) return <Text>Loading</Text>;
@@ -18,6 +15,7 @@ const Index = () => {
     <>
       <Camera
         ref={camera}
+        photo={true}
         style={StyleSheet.absoluteFill}
         device={device}
         isActive={true}
